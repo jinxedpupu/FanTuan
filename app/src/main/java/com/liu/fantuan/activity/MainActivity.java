@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
         mTabMine.setOnClickListener(this);
     }
 
-    @Override
+  /*  @Override
     protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         FragmentManager mFragmentManager = getSupportFragmentManager();
@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
         mmineFragment = mFragmentManager.findFragmentByTag("mine_fragment");
         //恢复销毁前显示的Fragment
         setFragment(savedInstanceState.getInt("fragment_id"));
-    }
+    }*/
 
     private void setFragment(int fragment_id) {
         //获取Fragment管理器
@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
                 //设置菜单栏为选中状态（修改文字和图片颜色）
                 mTabHome.setTextColor(getResources().getColor(R.color.colorTextPressed));
                 mTabHome.setCompoundDrawablesWithIntrinsicBounds(0,
-                        R.mipmap.ic_home_selected,0,0);
+                        R.mipmap.ic_sj_select,0,0);
                 //显示对应Fragment
                 if(mhomeFragment == null){
                     mhomeFragment = new BusinessFragment();
@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
                 mFragmentId = FRAGMENT_RANK;
                 mTabRanking.setTextColor(getResources().getColor(R.color.colorTextPressed));
                 mTabRanking.setCompoundDrawablesWithIntrinsicBounds(0,
-                        R.mipmap.ic_rank_selected,0,0);
+                        R.mipmap.ic_dd_select,0,0);
                 if(mrankFragment == null){
                     mrankFragment = new RankFragment();
                     mTransaction.add(R.id.container, mrankFragment, "rank_fragment");
@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
                 mFragmentId = FRAGMENT_MINE;
                 mTabMine.setTextColor(getResources().getColor(R.color.colorTextPressed));
                 mTabMine.setCompoundDrawablesWithIntrinsicBounds(0,
-                        R.mipmap.ic_mine_selected,0,0);
+                        R.mipmap.ic_yh_select,0,0);
                 if(mmineFragment == null){
                     mmineFragment = new MainFragment();
                     mTransaction.add(R.id.container, mmineFragment, "mine_fragment");
@@ -114,19 +114,19 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
             //将对应菜单栏设置为默认状态
             mTabHome.setTextColor(getResources().getColor(R.color.colorTextNormal));
             mTabHome.setCompoundDrawablesWithIntrinsicBounds(0,
-                    R.mipmap.ic_home_normal,0,0);
+                    R.mipmap.ic_sj_norma,0,0);
         }
         if(mrankFragment != null){
             transaction.hide(mrankFragment);
             mTabRanking.setTextColor(getResources().getColor(R.color.colorTextNormal));
             mTabRanking.setCompoundDrawablesWithIntrinsicBounds(0,
-                    R.mipmap.ic_rank_normal,0,0);
+                    R.mipmap.ic_dd_norma,0,0);
         }
         if(mmineFragment != null){
             transaction.hide(mmineFragment);
             mTabMine.setTextColor(getResources().getColor(R.color.colorTextNormal));
             mTabMine.setCompoundDrawablesWithIntrinsicBounds(0,
-                    R.mipmap.ic_mine_normal,0,0);
+                    R.mipmap.ic_yh_norma,0,0);
         }
     }
 
