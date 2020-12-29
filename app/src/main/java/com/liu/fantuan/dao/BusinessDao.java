@@ -8,6 +8,9 @@ import android.database.sqlite.SQLiteDatabase;
 import com.liu.fantuan.db.DBOpenHelper;
 import com.liu.fantuan.model.Businessinfo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class BusinessDao {
     private DBOpenHelper dbOpenHelper;
     private SQLiteDatabase db;
@@ -62,6 +65,27 @@ public class BusinessDao {
         cv.put("bussfz",Business.getBussfz());
         insernumb = db.insert("Business",null,cv);
         return insernumb;
+    }
+
+
+    public List<Businessinfo> BusinessinfoDesc() {
+        List<Businessinfo> resultList = new ArrayList<>();
+        db = dbOpenHelper.getReadableDatabase();//初始化SQLiteDatabase
+        Cursor cursor = db.rawQuery("select * from tb_distributor order by distributor_singularnum desc", null);
+        while (cursor.moveToNext()) {
+            Businessinfo businessinfo = new Businessinfo();
+            businessinfo.setBusid((int) cursor.getLong(cursor.getColumnIndex("busid")));
+            businessinfo.setBusname(cursor.getString(cursor.getColumnIndex("busname")));
+            businessinfo.setBuszhanghao(cursor.getString(cursor.getColumnIndex("buszhanghao")));
+            businessinfo.setBuspassword(cursor.getString(cursor.getColumnIndex("buspassword")));
+            businessinfo.setBusdianhua(cursor.getString(cursor.getColumnIndex("busdianhua")));
+            businessinfo.setBussfz(cursor.getString(cursor.getColumnIndex("bussfz")));
+            businessinfo.setBuspicpath(cursor.getString(cursor.getColumnIndex("buspicpath")));
+            resultList.add(businessinfo);
+        }
+        cursor.close();
+        db.close();
+        return resultList;
     }
 
 }

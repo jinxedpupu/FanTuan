@@ -2,7 +2,7 @@ package com.liu.fantuan.model;
 
 public class Businessinfo {
 
-    private String busid;
+    private int busid;
     private String busname;
     private String buszhanghao;
     private String buspassword;
@@ -10,11 +10,11 @@ public class Businessinfo {
     private String bussfz;
     private String buspicpath;
 
-    public String getBusid() {
+    public int getBusid() {
         return busid;
     }
 
-    public void setBusid(String busid) {
+    public void setBusid(int busid) {
         this.busid = busid;
     }
 

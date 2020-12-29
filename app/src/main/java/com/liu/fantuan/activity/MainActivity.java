@@ -42,7 +42,8 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
         mTabMine.setOnClickListener(this);
     }
 
-  /*  @Override
+    //1111111111111111111111111111111111
+    @Override
     protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         FragmentManager mFragmentManager = getSupportFragmentManager();
@@ -52,7 +53,7 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
         mmineFragment = mFragmentManager.findFragmentByTag("mine_fragment");
         //恢复销毁前显示的Fragment
         setFragment(savedInstanceState.getInt("fragment_id"));
-    }*/
+    }
 
     private void setFragment(int fragment_id) {
         //获取Fragment管理器

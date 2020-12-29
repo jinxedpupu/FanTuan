@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#FFD700</color>
-    <color name="colorPrimaryDark">#FFD700</color>
-    <color name="toobar">#FFD700</color>
+    <color name="colorPrimaryDark">#000000</color>
+    <color name="toobar">#ffffff</color>
     <color name="border">#ffffff</color>
     <color name="blue">#FFD700</color>
-    <color name="bgcolor">#FFD700</color>
+    <color name="bgcolor">#ffffff</color>
     <color name="white">#ffffff</color>
     <color name="colorAccent">#ffffff</color>
     <color name="colorTextNormal">#999988</color>
