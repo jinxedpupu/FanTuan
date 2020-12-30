@@ -17,8 +17,6 @@ public class CaipinDao {
         dbOpenHelper=new DBOpenHelper(context);
     }
 
-
-
     public List<Caipininfo> CaipininfoDesc() {
         List<Caipininfo> resultList = new ArrayList<>();
         db = dbOpenHelper.getReadableDatabase();//初始化SQLiteDatabase

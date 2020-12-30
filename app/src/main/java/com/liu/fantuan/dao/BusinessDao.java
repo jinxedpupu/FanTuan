@@ -71,10 +71,10 @@ public class BusinessDao {
     public List<Businessinfo> BusinessinfoDesc() {
         List<Businessinfo> resultList = new ArrayList<>();
         db = dbOpenHelper.getReadableDatabase();//初始化SQLiteDatabase
-        Cursor cursor = db.rawQuery("select * from tb_distributor order by distributor_singularnum desc", null);
+        Cursor cursor = db.rawQuery("select * from business", null);
         while (cursor.moveToNext()) {
             Businessinfo businessinfo = new Businessinfo();
-            businessinfo.setBusid((int) cursor.getLong(cursor.getColumnIndex("busid")));
+            businessinfo.setBusid(cursor.getInt(cursor.getColumnIndex("busid")));
             businessinfo.setBusname(cursor.getString(cursor.getColumnIndex("busname")));
             businessinfo.setBuszhanghao(cursor.getString(cursor.getColumnIndex("buszhanghao")));
             businessinfo.setBuspassword(cursor.getString(cursor.getColumnIndex("buspassword")));
