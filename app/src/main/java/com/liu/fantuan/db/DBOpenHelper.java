@@ -51,6 +51,12 @@ public class DBOpenHelper extends SQLiteOpenHelper {
         db.execSQL("insert into caipin values(3,1,'黄焖鸡米饭','千页豆腐',10,'')");
         db.execSQL("insert into caipin values(4,1,'黄焖鸡米饭','红烧肉',12,'')");
         db.execSQL("insert into caipin values(5,1,'黄焖鸡米饭','卤猪脚',16,'')");
+        db.execSQL("insert into caipin values(6,1,'黄焖鸡米饭','卤猪脚',16,'')");
+        db.execSQL("insert into caipin values(7,1,'黄焖鸡米饭','卤猪脚',16,'')");
+        db.execSQL("insert into caipin values(8,1,'黄焖鸡米饭','卤猪脚',16,'')");
+        db.execSQL("insert into caipin values(9,1,'黄焖鸡米饭','卤猪脚',16,'')");
+        db.execSQL("insert into caipin values(10,1,'黄焖鸡米饭','卤猪脚',16,'')");
+
 
         //创建订单表
         db.execSQL("create table 'dindan'('ddid' INTEGER PRIMARY KEY AUTOINCREMENT," +

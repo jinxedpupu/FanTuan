@@ -54,12 +54,13 @@ public class UserDao {
         db=dbOpenHelper.getReadableDatabase();
         long insernumb=0;
         ContentValues cv = new ContentValues();//map类型
-        cv.put("userid",user.getUserid());
+        /*cv.put("userid",user.getUserid());*/
         cv.put("userzhanghao",user.getUserzhanghao());
         cv.put("userpassword",user.getUserpassword());
         cv.put("username",user.getUsername());
         cv.put("userdianhua",user.getUserdianhua());
         cv.put("userdizhi",user.getUserdizhi());
+        cv.put("userpicpath",user.getUserpicpath());
         insernumb = db.insert("user",null,cv);
         return insernumb;
     }

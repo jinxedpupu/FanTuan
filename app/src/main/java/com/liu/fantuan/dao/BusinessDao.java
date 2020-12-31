@@ -57,13 +57,13 @@ public class BusinessDao {
         db=dbOpenHelper.getReadableDatabase();
         long insernumb=0;
         ContentValues cv = new ContentValues();//map类型
-        cv.put("busid",Business.getBusid());
         cv.put("buszhanghao",Business.getBuszhanghao());
         cv.put("buspassword",Business.getBuspassword());
         cv.put("busname",Business.getBusname());
         cv.put("busdianhua",Business.getBusdianhua());
         cv.put("bussfz",Business.getBussfz());
-        insernumb = db.insert("Business",null,cv);
+        cv.put("buspicpath",Business.getBuspicpath());
+        insernumb = db.insert("business",null,cv);
         return insernumb;
     }
 
