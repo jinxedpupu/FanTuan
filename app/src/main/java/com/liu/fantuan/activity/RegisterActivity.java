@@ -164,7 +164,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             user.setUsername(username_et.getText().toString());
             user.setUserdianhua(telphone_et.getText().toString());
             user.setUserdizhi(address_et.getText().toString());
-            //user.setUser_picpath(imagepath);
+            user.setUserpicpath(imagepath);
             if (userDao.addUser(user)>0){
                 Toast.makeText(this,"注册成功",Toast.LENGTH_SHORT).show();
                 Intent intent=new Intent(RegisterActivity.this,LoginActivity.class);

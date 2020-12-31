@@ -1,29 +1,35 @@
 package com.liu.fantuan.fragment;
+
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
 import com.liu.fantuan.R;
-import com.liu.fantuan.dao.UserDao;
-import com.liu.fantuan.model.Userinfo;
-public class MainFragment extends Fragment {
+import com.liu.fantuan.dao.BusinessDao;
+import com.liu.fantuan.model.Businessinfo;
+
+
+public class BuaMainFragment extends Fragment {
 
     private ImageView headImage;
     private Toolbar toolbar;
     private TextView showuser;
     private LinearLayout lin_ddxq;
 
-    public MainFragment() {
+    public BuaMainFragment() {
         // Required empty public constructor
     }
 
@@ -42,10 +48,10 @@ public class MainFragment extends Fragment {
         showuser = view.findViewById(R.id.showuser);
         SharedPreferences sp = getActivity().getSharedPreferences("userdata", Context.MODE_MULTI_PROCESS);
         String busid = sp.getString("userId", "");
-        UserDao userDao = new UserDao(getContext());
-        Userinfo userinfo = userDao.findUserById(busid);
+        BusinessDao businessDao = new BusinessDao(getContext());
+        Businessinfo businesser = businessDao.findUserById(busid);
         showuser.setText(busid);
-        Bitmap bitmap = BitmapFactory.decodeFile(userinfo.getUserpicpath());
+        Bitmap bitmap = BitmapFactory.decodeFile(businesser.getBuspicpath());
         headImage.setImageBitmap(bitmap);
         /*String picPath = user.getUser_picpath();
         Toast.makeText(getContext(), picPath, Toast.LENGTH_LONG).show();

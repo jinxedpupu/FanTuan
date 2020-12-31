@@ -5,9 +5,10 @@
     <color name="toobar">#ffffff</color>
     <color name="border">#ffffff</color>
     <color name="blue">#FFD700</color>
-    <color name="bgcolor">#009900</color>
+    <color name="bgcolor">#ffffff</color>
     <color name="white">#ffffff</color>
     <color name="colorAccent">#ffffff</color>
     <color name="colorTextNormal">#999988</color>
     <color name="colorTextPressed">#FFD700</color>
+    <color name="bgzccolor">#009900</color>
 </resources>

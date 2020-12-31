@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.MainActivity">
+    <FrameLayout
+        android:id="@+id/container"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/splitline"/>
+    <View
+        android:id="@+id/splitline"
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="@color/bgcolor"
+        app:layout_constraintBottom_toTopOf="@id/bnlinearlayout"/>
+    <LinearLayout
+        android:id="@+id/bnlinearlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent">
+        <TextView
+            android:id="@+id/tv_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="菜品"
+            android:textSize="16sp"
+            android:gravity="center_horizontal"
+            android:layout_weight="1"
+            app:drawableTopCompat="@mipmap/ic_sj_norma" />
+
+        <TextView
+            android:id="@+id/tv_ranking"
+            android:layout_width="138dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:text="订单"
+            android:textSize="16sp"
+            app:drawableTopCompat="@mipmap/ic_dd_norma" />
+        <TextView
+            android:id="@+id/tv_mine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="我的"
+            android:textSize="16sp"
+            android:gravity="center_horizontal"
+            android:layout_weight="1"
+            app:drawableTopCompat="@mipmap/ic_yh_norma" />
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

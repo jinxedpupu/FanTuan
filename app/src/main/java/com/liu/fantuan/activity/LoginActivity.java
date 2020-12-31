@@ -101,7 +101,7 @@ public class LoginActivity extends AppCompatActivity {
                         if (businessDao.login(username, userpassword)) {
                             editor.putString("userId", username);
                             editor.commit();
-                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                            Intent intent = new Intent(LoginActivity.this, UserMainActivity.class);
                             startActivity(intent);
                         } else {
                             //弹窗AlertDialog.Builder
