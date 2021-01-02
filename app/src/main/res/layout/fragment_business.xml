@@ -9,6 +9,7 @@
         android:orientation="vertical"
         android:theme="@style/AppTheme.AppBarOverlay"
         android:background="@color/bgcolor">
+
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -27,11 +28,23 @@
                     android:textSize="16dp" />
             </androidx.appcompat.widget.Toolbar>
         </com.google.android.material.appbar.AppBarLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <com.youth.banner.Banner
+                android:id="@+id/main_banner"
+                android:layout_width="match_parent"
+                android:layout_height="195dp" />
+        </LinearLayout>
+
         <ListView
             android:id="@+id/paihanglist"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            >
         </ListView>
     </LinearLayout>
 </FrameLayout>

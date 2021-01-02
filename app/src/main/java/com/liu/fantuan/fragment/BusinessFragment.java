@@ -16,17 +16,29 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.liu.fantuan.R;
+import com.liu.fantuan.activity.Bus_menuActivity;
 import com.liu.fantuan.dao.BusinessDao;
 import com.liu.fantuan.dao.CaipinDao;
 import com.liu.fantuan.model.Businessinfo;
 import com.liu.fantuan.model.Caipininfo;
+import com.youth.banner.Banner;
+import com.youth.banner.BannerConfig;
+import com.youth.banner.Transformer;
+import com.youth.banner.listener.OnBannerListener;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 
 public class BusinessFragment extends Fragment {
+
+    Banner banner;//banner组件
+    List mlist;//图片资源
+    List<String> mlist1;//轮播标题
 
     ListView listView;
     List<Businessinfo> list;
@@ -56,14 +68,38 @@ public class BusinessFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Businessinfo businessinfo=list.get(position);
                 Intent intent=new Intent();
-                /*intent.putExtra("ispsy","2");*/
                 intent.putExtra("busname",businessinfo.getBusname()+"");
                 intent.putExtra("buspicpath",businessinfo.getBuspicpath()+"");
-                //Log.i("data",caipininfo.getDistributor_idcar()+businessinfo.getDistributor_tel()+"");
-                //intent.setClass(getContext(), PersonInfoActivity.class);
+
+                intent.setClass(Objects.requireNonNull(getContext()), Bus_menuActivity.class);
+
+
                 startActivity(intent);
             }
         });
+
+        mlist = new ArrayList<>();
+        mlist.add(R.mipmap.lunbo1);
+        mlist.add(R.mipmap.lunbo2);
+        mlist.add(R.mipmap.lunbo3);
+        mlist1 = new ArrayList<>();
+        mlist1.add("");
+        mlist1.add("");
+        mlist1.add("");
+        banner = view.findViewById(R.id.main_banner);
+        banner.setImageLoader(new com.liu.fantuan.util.GiledImageLoader());   //设置图片加载器
+        banner.setImages(mlist);//设置图片源
+        banner.setBannerTitles(mlist1);//设置标题源
+        banner.setDelayTime(2000);//设置轮播事件，单位毫秒
+        banner.setBannerAnimation(Transformer.Stack);
+        banner.setOnBannerListener(new OnBannerListener() {
+            public void OnBannerClick(int position) {
+                Toast.makeText(getActivity(), "点击了轮播第" + position + "个图片" + position, Toast.LENGTH_SHORT).show();
+            }
+        });
+        banner.setIndicatorGravity(BannerConfig.CENTER);//设置指示器的位置
+        banner.start();//开始轮播，一定要调用此方法。
+
         return view;
     }
 
@@ -102,13 +138,6 @@ public class BusinessFragment extends Fragment {
             }else {
                 viewHolder= (BusinessFragment.ViewHolder) convertView.getTag();
             }
-           /* int pos =position+1;
-            viewHolder.mingcitv.setText(pos+"");
-            Bitmap bitmap = BitmapFactory.decodeFile(distributorList.get(position).getDistributor_picPath());
-            viewHolder.psyimageview.setImageBitmap(bitmap);
-            viewHolder.psynametv.setText(distributorList.get(position).getDistributor_name());
-            viewHolder.psyjdcstv.setText(distributorList.get(position).getDistributor_singularnum()+"");
-            return convertView;*/
             Businessinfo businessinfo = list.get(position);
             viewHolder.busnametv.setText(businessinfo.getBusname());
             Bitmap bitmap = BitmapFactory.decodeFile(businessinfo.getBuspicpath());
