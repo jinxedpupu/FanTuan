@@ -3,15 +3,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.liu.fantuan.fragment.RankFragment">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:theme="@style/AppTheme.AppBarOverlay"
         android:background="@color/bgcolor">
+
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:background="@color/white"
@@ -26,12 +29,41 @@
                     android:text="菜品管理"
                     android:textSize="16dp" />
             </androidx.appcompat.widget.Toolbar>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:id="@+id/cpadd">
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@color/bgcpaddcolor"
+                    android:textColor="#000"
+                    android:layout_weight="1"
+                    android:textSize="30dp"
+                    android:text="添加菜品" />
+            </LinearLayout>
+
+            <!--<Button
+                android:id="@+id/cpadd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/bgcpaddcolor"
+                android:textSize="20dp"
+
+                android:textColor="#000"
+                android:text="添加菜品" />
+-->
         </com.google.android.material.appbar.AppBarLayout>
         <ListView
             android:id="@+id/paihanglist"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1">
+
         </ListView>
     </LinearLayout>
 </FrameLayout>

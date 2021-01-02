@@ -1,11 +1,14 @@
 package com.liu.fantuan.dao;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.liu.fantuan.db.DBOpenHelper;
+import com.liu.fantuan.model.Businessinfo;
 import com.liu.fantuan.model.Caipininfo;
+import com.liu.fantuan.model.Userinfo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,4 +39,38 @@ public class CaipinDao {
         return resultList;
     }
 
+    /**
+     * 菜品添加
+     * @param caipin
+     * @return
+     */
+    public long addcaipin(Caipininfo caipin){
+        db=dbOpenHelper.getReadableDatabase();
+        long insernumb=0;
+        ContentValues cv = new ContentValues();//map类型
+        cv.put("busid",caipin.getBusid());
+        cv.put("cpname",caipin.getCpname());
+        cv.put("cpjiage",caipin.getCpjiage());
+        cv.put("cpbeizhu",caipin.getCpbeizhu());
+        cv.put("cptupian",caipin.getCptupian());
+        insernumb = db.insert("caipin",null,cv);
+        return insernumb;
+    }
+
+    /*public Caipininfo findUserById(String toString) {
+    }*/
+
+    public Caipininfo findUserById(String busname){
+        db=dbOpenHelper.getReadableDatabase();//初始化SQLiteDatabase
+        Cursor cursor = db.rawQuery("select * from caipin where busname='" + busname + "'", null);
+        if (cursor.moveToNext()){
+            Caipininfo caipininfo=new Caipininfo();
+            caipininfo.setCpname(cursor.getString(cursor.getColumnIndex("busname")));
+            caipininfo.setCpjiage(cursor.getInt(cursor.getColumnIndex("buszhanghao")));
+            caipininfo.setCptupian(cursor.getString(cursor.getColumnIndex("buspassword")));
+            caipininfo.setBusid(cursor.getInt(cursor.getColumnIndex("busdianhua")));
+            return caipininfo;
+        }
+        return null;
+    }
 }

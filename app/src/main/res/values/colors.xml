@@ -11,4 +11,5 @@
     <color name="colorTextNormal">#999988</color>
     <color name="colorTextPressed">#FFD700</color>
     <color name="bgzccolor">#009900</color>
+    <color name="bgcpaddcolor">#E8E8E8</color>
 </resources>
