@@ -57,18 +57,15 @@ public class CaipinDao {
         return insernumb;
     }
 
-    /*public Caipininfo findUserById(String toString) {
-    }*/
-
-    public Caipininfo findUserById(String busname){
+    public Caipininfo findUserById(String cpname){
         db=dbOpenHelper.getReadableDatabase();//初始化SQLiteDatabase
-        Cursor cursor = db.rawQuery("select * from caipin where busname='" + busname + "'", null);
+        Cursor cursor = db.rawQuery("select * from caipin where cpname='" + cpname + "'", null);
         if (cursor.moveToNext()){
             Caipininfo caipininfo=new Caipininfo();
-            caipininfo.setCpname(cursor.getString(cursor.getColumnIndex("busname")));
-            caipininfo.setCpjiage(cursor.getInt(cursor.getColumnIndex("buszhanghao")));
-            caipininfo.setCptupian(cursor.getString(cursor.getColumnIndex("buspassword")));
-            caipininfo.setBusid(cursor.getInt(cursor.getColumnIndex("busdianhua")));
+            caipininfo.setCpname(cursor.getString(cursor.getColumnIndex("cpname")));
+            caipininfo.setCpjiage(cursor.getInt(cursor.getColumnIndex("cpjiage")));
+            caipininfo.setCptupian(cursor.getString(cursor.getColumnIndex("cptupian")));
+            caipininfo.setBusid(cursor.getInt(cursor.getColumnIndex("busid")));
             return caipininfo;
         }
         return null;

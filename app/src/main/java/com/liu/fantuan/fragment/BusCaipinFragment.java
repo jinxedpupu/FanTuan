@@ -2,6 +2,8 @@ package com.liu.fantuan.fragment;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -103,6 +105,7 @@ public class BusCaipinFragment extends Fragment {
                 viewHolder.cptupianview=convertView.findViewById(R.id.cptupian);
                 viewHolder.cpjiagetv=convertView.findViewById(R.id.cpjiage);
                 viewHolder.cpbeizhu=convertView.findViewById(R.id.cpbeizhu);
+                viewHolder.cptupianview=convertView.findViewById(R.id.cptupian);
                 convertView.setTag(viewHolder);
             }else {
                 viewHolder= (BusCaipinFragment.ViewHolder) convertView.getTag();
@@ -118,7 +121,8 @@ public class BusCaipinFragment extends Fragment {
             viewHolder.cpnametv.setText(caipininfo.getCpname());
             viewHolder.cpbeizhu.setText(caipininfo.getCpbeizhu());
             viewHolder.cpjiagetv.setText(caipininfo.getCpjiage() + "");
-
+            Bitmap bitmap = BitmapFactory.decodeFile(caipininfo.getCptupian());
+            viewHolder.cptupianview.setImageBitmap(bitmap);
             return convertView;
         }
     }
@@ -127,7 +131,7 @@ public class BusCaipinFragment extends Fragment {
         public TextView cpnametv;
         public TextView cpjiagetv;
         public TextView cpbeizhu;
-        ImageView cptupianview;
+        public ImageView cptupianview;
     }
 
 
