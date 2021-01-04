@@ -4,8 +4,12 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+
 import com.liu.fantuan.db.DBOpenHelper;
+import com.liu.fantuan.model.Businessinfo;
 import com.liu.fantuan.model.Caipininfo;
+import com.liu.fantuan.model.Userinfo;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,15 +20,14 @@ public class CaipinDao {
         dbOpenHelper=new DBOpenHelper(context);
     }
 
-    public List<Caipininfo> CaipininfoDesc(int busid) {
+    public List<Caipininfo> CaipininfoDesc() {
         List<Caipininfo> resultList = new ArrayList<>();
         db = dbOpenHelper.getReadableDatabase();//初始化SQLiteDatabase
-        /*Cursor cursor = db.rawQuery("select * from caipin", null);*/
-        Cursor cursor = db.rawQuery("select * from caipin where busid='" + busid + "'", null);
+        Cursor cursor = db.rawQuery("select * from caipin", null);
         while (cursor.moveToNext()) {
             Caipininfo caipininfo = new Caipininfo();
             caipininfo.setCpid(cursor.getInt(cursor.getColumnIndex("cpid")));
-            caipininfo.setBusid(cursor.getInt(cursor.getColumnIndex("busid")));
+            caipininfo.setBusid(cursor.getInt(cursor.getColumnIndex("cpid")));
             caipininfo.setCpname(cursor.getString(cursor.getColumnIndex("cpname")));
             caipininfo.setCpjiage(cursor.getInt(cursor.getColumnIndex("cpjiage")));
             caipininfo.setCpbeizhu(cursor.getString(cursor.getColumnIndex("cpbeizhu")));
@@ -54,16 +57,18 @@ public class CaipinDao {
         return insernumb;
     }
 
+    /*public Caipininfo findUserById(String toString) {
+    }*/
 
-    public Caipininfo findUserById(String cpname){
+    public Caipininfo findUserById(String busname){
         db=dbOpenHelper.getReadableDatabase();//初始化SQLiteDatabase
-        Cursor cursor = db.rawQuery("select * from caipin where cpname='" + cpname + "'", null);
+        Cursor cursor = db.rawQuery("select * from caipin where busname='" + busname + "'", null);
         if (cursor.moveToNext()){
             Caipininfo caipininfo=new Caipininfo();
-            caipininfo.setCpname(cursor.getString(cursor.getColumnIndex("cpname")));
-            caipininfo.setCpjiage(cursor.getInt(cursor.getColumnIndex("cpjiage")));
-            caipininfo.setCptupian(cursor.getString(cursor.getColumnIndex("cotupian")));
-            caipininfo.setBusid(cursor.getInt(cursor.getColumnIndex("busid")));
+            caipininfo.setCpname(cursor.getString(cursor.getColumnIndex("busname")));
+            caipininfo.setCpjiage(cursor.getInt(cursor.getColumnIndex("buszhanghao")));
+            caipininfo.setCptupian(cursor.getString(cursor.getColumnIndex("buspassword")));
+            caipininfo.setBusid(cursor.getInt(cursor.getColumnIndex("busdianhua")));
             return caipininfo;
         }
         return null;
