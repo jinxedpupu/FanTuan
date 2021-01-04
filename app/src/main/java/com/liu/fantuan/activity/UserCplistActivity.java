@@ -19,7 +19,7 @@ import com.liu.fantuan.model.Caipininfo;
 import java.util.List;
 
 
-public class BusCplistActivity extends AppCompatActivity {
+public class UserCplistActivity extends AppCompatActivity {
 
     private ImageView buspicpathtv;
     private TextView busnametv,busdianhuatv;
@@ -29,7 +29,7 @@ public class BusCplistActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_bus_menu);
+        setContentView(R.layout.activity_user_cp_list);
         init();
     }
 
@@ -52,14 +52,14 @@ public class BusCplistActivity extends AppCompatActivity {
         Bitmap bitmap = BitmapFactory.decodeFile(buspicpath);
         buspicpathtv.setImageBitmap(bitmap);
 
-        CaipinDao caipinDao=new CaipinDao(BusCplistActivity.this);
+        CaipinDao caipinDao=new CaipinDao(UserCplistActivity.this);
         list = caipinDao.CaipininfoDesc(busid);
-        BusCplistActivity.MyListAdapter myListAdapter=new BusCplistActivity.MyListAdapter(BusCplistActivity.this,list);
+        UserCplistActivity.MyListAdapter myListAdapter=new UserCplistActivity.MyListAdapter(UserCplistActivity.this,list);
         listView.setAdapter(myListAdapter);
     }
 
 
-    public BusCplistActivity() {
+    public UserCplistActivity() {
         // Required empty public constructor
     }
 
@@ -98,7 +98,7 @@ public class BusCplistActivity extends AppCompatActivity {
 
                 convertView.setTag(viewHolder);
             }else {
-                viewHolder= (BusCplistActivity.ViewHolder) convertView.getTag();
+                viewHolder= (UserCplistActivity.ViewHolder) convertView.getTag();
             }
             Caipininfo caipininfo = list.get(position);
             viewHolder.cpnametv.setText(caipininfo.getCpname());

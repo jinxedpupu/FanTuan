@@ -33,7 +33,7 @@ import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class BusinessRegisterActivity extends AppCompatActivity implements View.OnClickListener{
+public class BusRegisterActivity extends AppCompatActivity implements View.OnClickListener{
     EditText distributorid_et,distributorname_et,distributorpassword_et,distributortelphone_et,distributoridcar_et;
     BusinessDao businessDao = new BusinessDao(this);
     Toolbar toolbar;
@@ -84,7 +84,7 @@ public class BusinessRegisterActivity extends AppCompatActivity implements View.
                 System.out.println("newFile.getPath()="+newFile.getPath());
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                     //大于等于版本24（7.0）的场合
-                    imageUri = FileProvider.getUriForFile(BusinessRegisterActivity.this, "com.liu.fantuan.activity.fileprovider", newFile);//此处的outputImage指定的路径要在file_paths.xml文件对应配置path指定路径的子路径
+                    imageUri = FileProvider.getUriForFile(BusRegisterActivity.this, "com.liu.fantuan.activity.fileprovider", newFile);//此处的outputImage指定的路径要在file_paths.xml文件对应配置path指定路径的子路径
                 } else {
                     //小于android 版本7.0（24）的场合
                     imageUri = Uri.fromFile(newFile);
@@ -105,7 +105,7 @@ public class BusinessRegisterActivity extends AppCompatActivity implements View.
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.goback:
-                startActivity(new Intent(BusinessRegisterActivity.this, LoginActivity.class));
+                startActivity(new Intent(BusRegisterActivity.this, LoginActivity.class));
                 finish();
                 break;
             case R.id.reset:
@@ -133,7 +133,7 @@ public class BusinessRegisterActivity extends AppCompatActivity implements View.
         Matcher m_idcar = p_idcar.matcher(distributoridcar_et.getText().toString());
         Businessinfo businessinfo = businessDao.findUserById(distributorid_et.getText().toString());
         if (distributorid_et.getText().toString().indexOf("b")<0) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(BusinessRegisterActivity.this);
+            AlertDialog.Builder builder = new AlertDialog.Builder(BusRegisterActivity.this);
             builder.setTitle("提示");
             builder.setMessage("输入账号格式错误");
             builder.setPositiveButton("确定", null);
@@ -146,25 +146,25 @@ public class BusinessRegisterActivity extends AppCompatActivity implements View.
     //验证格式
     public  void handleRegister(Object o,Matcher m,Matcher m_phone,Matcher m_idcar){
         if (o != null) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(BusinessRegisterActivity.this);
+            AlertDialog.Builder builder = new AlertDialog.Builder(BusRegisterActivity.this);
             builder.setTitle("提示");
             builder.setMessage("该用配送员已存在");
             builder.setPositiveButton("确定", null);
             builder.show();
         } else if (!m.matches()) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(BusinessRegisterActivity.this);
+            AlertDialog.Builder builder = new AlertDialog.Builder(BusRegisterActivity.this);
             builder.setTitle("提示");
             builder.setMessage("输入账号格式错误");
             builder.setPositiveButton("确定", null);
             builder.show();
         } else if (!m_phone.matches()) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(BusinessRegisterActivity.this);
+            AlertDialog.Builder builder = new AlertDialog.Builder(BusRegisterActivity.this);
             builder.setTitle("提示");
             builder.setMessage("输入电话格式错误");
             builder.setPositiveButton("确定", null);
             builder.show();
         }else if(!m_idcar.matches()) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(BusinessRegisterActivity.this);
+            AlertDialog.Builder builder = new AlertDialog.Builder(BusRegisterActivity.this);
             builder.setTitle("提示");
             builder.setMessage("输入身份证号码错误");
             builder.setPositiveButton("确定", null);
@@ -180,7 +180,7 @@ public class BusinessRegisterActivity extends AppCompatActivity implements View.
             //businessDao.setDistributor_picPath(imagepath);
             if (businessDao.addBusiness(businessinfo)>0){
                 Toast.makeText(this,"注册成功",Toast.LENGTH_SHORT).show();
-                Intent intent=new Intent(BusinessRegisterActivity.this,LoginActivity.class);
+                Intent intent=new Intent(BusRegisterActivity.this,LoginActivity.class);
                 intent.putExtra("buszhanghao",businessinfo.getBuszhanghao());
                 startActivity(intent);
                 finish();

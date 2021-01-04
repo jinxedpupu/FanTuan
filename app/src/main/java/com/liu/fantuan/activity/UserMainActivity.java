@@ -11,9 +11,9 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.liu.fantuan.R;
-import com.liu.fantuan.fragment.BuaMainFragment;
-import com.liu.fantuan.fragment.BusCaipinFragment;
-import com.liu.fantuan.fragment.BusDdFragment;
+import com.liu.fantuan.fragment.UserBuslistFragment;
+import com.liu.fantuan.fragment.UserMainFragment;
+import com.liu.fantuan.fragment.UserDdFragment;
 
 public class UserMainActivity extends AppCompatActivity  implements View.OnClickListener {
     TextView mTabHome,mTabRanking,mTabMine;
@@ -73,7 +73,7 @@ public class UserMainActivity extends AppCompatActivity  implements View.OnClick
                         R.mipmap.ic_sj_select,0,0);
                 //显示对应Fragment
                 if(mhomeFragment == null){
-                    mhomeFragment = new BusCaipinFragment();
+                    mhomeFragment = new UserBuslistFragment();
                     mTransaction.add(R.id.container, mhomeFragment, "home_fragment");
                 }else {
                     mTransaction.show(mhomeFragment);
@@ -85,7 +85,7 @@ public class UserMainActivity extends AppCompatActivity  implements View.OnClick
                 mTabRanking.setCompoundDrawablesWithIntrinsicBounds(0,
                         R.mipmap.ic_dd_select,0,0);
                 if(mrankFragment == null){
-                    mrankFragment = new BusDdFragment();
+                    mrankFragment = new UserDdFragment();
                     mTransaction.add(R.id.container, mrankFragment, "rank_fragment");
                 }else {
                     mTransaction.show(mrankFragment);
@@ -97,7 +97,7 @@ public class UserMainActivity extends AppCompatActivity  implements View.OnClick
                 mTabMine.setCompoundDrawablesWithIntrinsicBounds(0,
                         R.mipmap.ic_yh_select,0,0);
                 if(mmineFragment == null){
-                    mmineFragment = new BuaMainFragment();
+                    mmineFragment = new UserMainFragment();
                     mTransaction.add(R.id.container, mmineFragment, "mine_fragment");
                 }else {
                     mTransaction.show(mmineFragment);

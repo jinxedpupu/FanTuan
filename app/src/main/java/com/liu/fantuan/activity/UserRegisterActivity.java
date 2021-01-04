@@ -33,7 +33,7 @@ import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class RegisterActivity extends AppCompatActivity implements View.OnClickListener{
+public class UserRegisterActivity extends AppCompatActivity implements View.OnClickListener{
     EditText userid_et,username_et,password_et,telphone_et,address_et;
     UserDao userDao=new UserDao(this);
     Toolbar toolbar;
@@ -84,7 +84,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 System.out.println("newFile.getPath()="+newFile.getPath());
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                     //大于等于版本24（7.0）的场合
-                    imageUri = FileProvider.getUriForFile(RegisterActivity.this, "com.liu.fantuan.activity.fileprovider", newFile);//此处的outputImage指定的路径要在file_paths.xml文件对应配置path指定路径的子路径
+                    imageUri = FileProvider.getUriForFile(UserRegisterActivity.this, "com.liu.fantuan.activity.fileprovider", newFile);//此处的outputImage指定的路径要在file_paths.xml文件对应配置path指定路径的子路径
                 } else {
                     //小于android 版本7.0（24）的场合
                     imageUri = Uri.fromFile(newFile);
@@ -105,7 +105,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.goback:
-                startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+                startActivity(new Intent(UserRegisterActivity.this, LoginActivity.class));
                 finish();
                 break;
             case R.id.reset:
@@ -128,7 +128,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         Matcher m_phone = p_phone.matcher(telphone_et.getText().toString());
         Userinfo user = userDao.findUserById(userid_et.getText().toString());
         if (userid_et.getText().toString().indexOf("u")<0) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
+            AlertDialog.Builder builder = new AlertDialog.Builder(UserRegisterActivity.this);
             builder.setTitle("提示");
             builder.setMessage("输入账号格式错误");
             builder.setPositiveButton("确定", null);
@@ -140,19 +140,19 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
     public  void handleRegister(Object o,Matcher m,Matcher m_phone){
         if (o != null) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
+            AlertDialog.Builder builder = new AlertDialog.Builder(UserRegisterActivity.this);
             builder.setTitle("提示");
             builder.setMessage("该用户名已存在");
             builder.setPositiveButton("确定", null);
             builder.show();
         } else if (!m.matches()) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
+                AlertDialog.Builder builder = new AlertDialog.Builder(UserRegisterActivity.this);
                 builder.setTitle("提示");
                 builder.setMessage("输入账号格式错误");
                 builder.setPositiveButton("确定", null);
                 builder.show(); }
         else if (!m_phone.matches()) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
+            AlertDialog.Builder builder = new AlertDialog.Builder(UserRegisterActivity.this);
             builder.setTitle("提示");
             builder.setMessage("输入电话格式错误");
             builder.setPositiveButton("确定", null);
@@ -167,7 +167,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             user.setUserpicpath(imagepath);
             if (userDao.addUser(user)>0){
                 Toast.makeText(this,"注册成功",Toast.LENGTH_SHORT).show();
-                Intent intent=new Intent(RegisterActivity.this,LoginActivity.class);
+                Intent intent=new Intent(UserRegisterActivity.this,LoginActivity.class);
                 //intent.setClass(RegisterActivity.this, LoginActivity.class);
                 intent.putExtra("userzhanghao",user.getUserzhanghao());
                 startActivity(intent);

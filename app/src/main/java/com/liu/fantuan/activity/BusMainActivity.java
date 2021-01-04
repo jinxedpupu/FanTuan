@@ -11,11 +11,11 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.liu.fantuan.R;
-import com.liu.fantuan.fragment.BusinessFragment;
-import com.liu.fantuan.fragment.MainFragment;
-import com.liu.fantuan.fragment.DdFragment;
+import com.liu.fantuan.fragment.BuaMainFragment;
+import com.liu.fantuan.fragment.BusCaipinFragment;
+import com.liu.fantuan.fragment.BusDdFragment;
 
-public class MainActivity extends AppCompatActivity  implements View.OnClickListener {
+public class BusMainActivity extends AppCompatActivity  implements View.OnClickListener {
     TextView mTabHome,mTabRanking,mTabMine;
     private Fragment mhomeFragment,mrankFragment,mmineFragment;
     private int mFragmentId=0;
@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
                         R.mipmap.ic_sj_select,0,0);
                 //显示对应Fragment
                 if(mhomeFragment == null){
-                    mhomeFragment = new BusinessFragment();
+                    mhomeFragment = new BusCaipinFragment();
                     mTransaction.add(R.id.container, mhomeFragment, "home_fragment");
                 }else {
                     mTransaction.show(mhomeFragment);
@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
                 mTabRanking.setCompoundDrawablesWithIntrinsicBounds(0,
                         R.mipmap.ic_dd_select,0,0);
                 if(mrankFragment == null){
-                    mrankFragment = new DdFragment();
+                    mrankFragment = new BusDdFragment();
                     mTransaction.add(R.id.container, mrankFragment, "rank_fragment");
                 }else {
                     mTransaction.show(mrankFragment);
@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
                 mTabMine.setCompoundDrawablesWithIntrinsicBounds(0,
                         R.mipmap.ic_yh_select,0,0);
                 if(mmineFragment == null){
-                    mmineFragment = new MainFragment();
+                    mmineFragment = new BuaMainFragment();
                     mTransaction.add(R.id.container, mmineFragment, "mine_fragment");
                 }else {
                     mTransaction.show(mmineFragment);

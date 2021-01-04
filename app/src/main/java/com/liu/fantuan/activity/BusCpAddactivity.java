@@ -1,6 +1,5 @@
 package com.liu.fantuan.activity;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
@@ -24,17 +23,13 @@ import android.widget.Toast;
 
 import com.liu.fantuan.R;
 import com.liu.fantuan.dao.CaipinDao;
-import com.liu.fantuan.dao.UserDao;
 import com.liu.fantuan.fragment.BusCaipinFragment;
 import com.liu.fantuan.model.Caipininfo;
-import com.liu.fantuan.model.Userinfo;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class BusCpAddactivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -53,7 +48,7 @@ public class BusCpAddactivity extends AppCompatActivity implements View.OnClickL
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_bus_cp_addactivity);
+        setContentView(R.layout.activity_bus_cp_add);
 
         findViewById(R.id.reset).setOnClickListener(this);
         busid_et=findViewById(R.id.busid);

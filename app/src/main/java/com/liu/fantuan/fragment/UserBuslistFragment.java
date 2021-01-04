@@ -16,7 +16,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.liu.fantuan.R;
-import com.liu.fantuan.activity.BusCplistActivity;
+import com.liu.fantuan.activity.UserCplistActivity;
 import com.liu.fantuan.dao.BusinessDao;
 import com.liu.fantuan.model.Businessinfo;
 import com.youth.banner.Banner;
@@ -27,7 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class BusinessFragment extends Fragment {
+public class UserBuslistFragment extends Fragment {
 
     Banner banner;//banner组件
     List mlist;//图片资源
@@ -35,7 +35,7 @@ public class BusinessFragment extends Fragment {
 
     ListView listView;
     List<Businessinfo> list;
-    public BusinessFragment() {
+    public UserBuslistFragment() {
         // Required empty public constructor
     }
 
@@ -46,14 +46,14 @@ public class BusinessFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view=inflater.inflate(R.layout.fragment_business, container, false);
+        View view=inflater.inflate(R.layout.fragment_user_bus_list, container, false);
         listView=view.findViewById(R.id.paihanglist);
 
         BusinessDao businessDao=new BusinessDao(getContext());
         list = businessDao.BusinessinfoDesc();
 
         //System.out.println("list.size()="+list.size());
-        BusinessFragment.MyListAdapter myListAdapter=new BusinessFragment.MyListAdapter(getContext(),list);
+        UserBuslistFragment.MyListAdapter myListAdapter=new UserBuslistFragment.MyListAdapter(getContext(),list);
         listView.setAdapter(myListAdapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -65,7 +65,7 @@ public class BusinessFragment extends Fragment {
                 intent.putExtra("buspicpath",businessinfo.getBuspicpath()+"");
                 intent.putExtra("busdianhua",businessinfo.getBusdianhua());
                 intent.putExtra("busid",String.valueOf(businessinfo.getBusid()));
-                intent.setClass(Objects.requireNonNull(getContext()), BusCplistActivity.class);
+                intent.setClass(Objects.requireNonNull(getContext()), UserCplistActivity.class);
                 startActivity(intent);
             }
         });
@@ -128,7 +128,7 @@ public class BusinessFragment extends Fragment {
                 viewHolder.buspicpathview=convertView.findViewById(R.id.buspicpath);
                 convertView.setTag(viewHolder);
             }else {
-                viewHolder= (BusinessFragment.ViewHolder) convertView.getTag();
+                viewHolder= (UserBuslistFragment.ViewHolder) convertView.getTag();
             }
             Businessinfo businessinfo = list.get(position);
             viewHolder.busnametv.setText(businessinfo.getBusname());

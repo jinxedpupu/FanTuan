@@ -22,11 +22,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.BusCplistActivity"></activity>
+        <activity android:name=".activity.BusCpXgActivity"></activity>
+        <activity android:name=".activity.UserCplistActivity" />
         <activity android:name=".activity.BusCpAddactivity" />
-        <activity android:name=".activity.UserMainActivity" />
-        <activity android:name=".activity.BusinessRegisterActivity" />
-        <activity android:name=".activity.RegisterActivity" />
+        <activity android:name=".activity.BusMainActivity" />
+        <activity android:name=".activity.BusRegisterActivity" />
+        <activity android:name=".activity.UserRegisterActivity" />
         <activity android:name=".activity.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -34,7 +35,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.MainActivity" />
+        <activity android:name=".activity.UserMainActivity" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

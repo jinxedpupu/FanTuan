@@ -67,7 +67,7 @@ public class LoginActivity extends AppCompatActivity {
                         if (userDao.login(username, userpassword)) {
                             editor.putString("userId", username);
                             editor.commit();
-                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                            Intent intent = new Intent(LoginActivity.this, UserMainActivity.class);
                             startActivity(intent);
                         } else {
                             //弹窗AlertDialog.Builder
@@ -103,7 +103,7 @@ public class LoginActivity extends AppCompatActivity {
                             editor.putString("buszhanghao", username);
                             editor.commit();
 
-                            Intent intent = new Intent(LoginActivity.this, UserMainActivity.class);
+                            Intent intent = new Intent(LoginActivity.this, BusMainActivity.class);
                             startActivity(intent);
                         } else {
                             //弹窗AlertDialog.Builder
@@ -146,11 +146,11 @@ public class LoginActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         if(which==0){
                             //页面跳转Intent
-                            Intent intent =new Intent(LoginActivity.this,RegisterActivity.class);
+                            Intent intent =new Intent(LoginActivity.this, UserRegisterActivity.class);
                             startActivity(intent);
                             finish();//关掉上一层界面，没有则是覆盖上一层界面
                         }else if(which==1){
-                            Intent intent =new Intent(LoginActivity.this,BusinessRegisterActivity.class);
+                            Intent intent =new Intent(LoginActivity.this, BusRegisterActivity.class);
                             startActivity(intent);
                             finish();//关掉上一层界面，没有则是覆盖上一层界面
                         }

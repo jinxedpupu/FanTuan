@@ -24,7 +24,7 @@ import com.liu.fantuan.model.Caipininfo;
 import java.util.List;
 
 
-public class DdFragment extends Fragment {
+public class UserDdFragment extends Fragment {
 /*
     ListView listView;
     List<Caipininfo> list;

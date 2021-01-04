@@ -16,14 +16,14 @@ import android.widget.TextView;
 import com.liu.fantuan.R;
 import com.liu.fantuan.dao.UserDao;
 import com.liu.fantuan.model.Userinfo;
-public class MainFragment extends Fragment {
+public class UserMainFragment extends Fragment {
 
     private ImageView headImage;
     private Toolbar toolbar;
     private TextView showuser;
     private LinearLayout lin_ddxq;
 
-    public MainFragment() {
+    public UserMainFragment() {
         // Required empty public constructor
     }
 
@@ -35,7 +35,7 @@ public class MainFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_main, container, false);
+        View view = inflater.inflate(R.layout.fragment_user_main, container, false);
         toolbar = view.findViewById(R.id.toolbar);
         lin_ddxq = view.findViewById(R.id.ddxq);
         headImage = view.findViewById(R.id.myicon);
