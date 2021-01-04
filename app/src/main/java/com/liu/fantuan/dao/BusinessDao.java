@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.liu.fantuan.db.DBOpenHelper;
 import com.liu.fantuan.model.Businessinfo;
+import com.liu.fantuan.model.Caipininfo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +18,8 @@ public class BusinessDao {
     public BusinessDao(Context context){
         dbOpenHelper=new DBOpenHelper(context);
     }
+
+
 
     //商家登录
     public boolean login(String buszhanghao,String buspassword){
@@ -88,4 +91,16 @@ public class BusinessDao {
         return resultList;
     }
 
+
+    public int BusinessDesc(String buszhanghao) {
+        db = dbOpenHelper.getReadableDatabase();//初始化SQLiteDatabase
+        int busid = 0;
+        Cursor cursor = db.rawQuery("select * from business where buszhanghao='" + buszhanghao + "'", null);
+        while (cursor.moveToNext()) {
+            busid = cursor.getInt(cursor.getColumnIndex("busid"));
+        }
+        cursor.close();
+        db.close();
+        return busid;
+    }
 }

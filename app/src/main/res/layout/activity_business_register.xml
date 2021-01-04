@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:id="@+id/zc_layout"
-    android:background="@color/bgcolor">
+    android:background="@color/bgzccolor">
     <androidx.appcompat.widget.Toolbar
         app:title=" "
         android:id="@+id/toolbar"

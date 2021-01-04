@@ -14,9 +14,6 @@ import com.liu.fantuan.R;
 import com.liu.fantuan.fragment.BuaMainFragment;
 import com.liu.fantuan.fragment.BusCaipinFragment;
 import com.liu.fantuan.fragment.BusDdFragment;
-import com.liu.fantuan.fragment.BusinessFragment;
-import com.liu.fantuan.fragment.MainFragment;
-import com.liu.fantuan.fragment.RankFragment;
 
 public class UserMainActivity extends AppCompatActivity  implements View.OnClickListener {
     TextView mTabHome,mTabRanking,mTabMine;

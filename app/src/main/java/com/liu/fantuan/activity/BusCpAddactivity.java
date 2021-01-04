@@ -38,7 +38,7 @@ import java.util.regex.Pattern;
 
 public class BusCpAddactivity extends AppCompatActivity implements View.OnClickListener{
 
-    EditText busid_et,cpname_et,cojiage_et,cpbeizhu_et;
+    EditText busid_et,cpname_et,cpjiage_et,cpbeizhu_et;
     //UserDao userDao=new UserDao(this);
     CaipinDao caipinDao = new CaipinDao(this);
     Toolbar toolbar;
@@ -58,7 +58,7 @@ public class BusCpAddactivity extends AppCompatActivity implements View.OnClickL
         findViewById(R.id.reset).setOnClickListener(this);
         busid_et=findViewById(R.id.busid);
         cpname_et=findViewById(R.id.cpname);
-        cojiage_et=findViewById(R.id.cpjiage);
+        cpjiage_et=findViewById(R.id.cpjiage);
         cpbeizhu_et=findViewById(R.id.cpbeizhu);
 
         toolbar=findViewById(R.id.toolbar);
@@ -115,7 +115,7 @@ public class BusCpAddactivity extends AppCompatActivity implements View.OnClickL
             case R.id.reset:
                 busid_et.setText("");
                 cpname_et.setText("");
-                cojiage_et.setText("");
+                cpjiage_et.setText("");
                 cpbeizhu_et.setText("");
                 break;
             case R.id.register:
@@ -124,53 +124,20 @@ public class BusCpAddactivity extends AppCompatActivity implements View.OnClickL
         }
     }
 
-    private  void formatCheck() {
-        Pattern p = Pattern.compile("^[0-9]{1,5}");
-        Matcher m = p.matcher(busid_et.getText().toString());
-        Pattern p_phone = Pattern.compile("^1[0-9]{1,9}");
-        Matcher m_phone = p_phone.matcher(cojiage_et.getText().toString());
-        Caipininfo caipininfo = caipinDao.findUserById(busid_et.getText().toString());
-        if (busid_et.getText().toString().indexOf("")<0) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(BusCpAddactivity.this);
-            builder.setTitle("提示");
-            builder.setMessage("输入商家编号错误");
-            builder.setPositiveButton("确定", null);
-            builder.show();
-        } else {
-            handleRegister(caipininfo, m, m_phone);
-        }
-    }
-
-    public  void handleRegister(Object o,Matcher m,Matcher m_phone){
-        if (!m.matches()) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(BusCpAddactivity.this);
-            builder.setTitle("提示");
-            builder.setMessage("输入商家编号格式错误");
-            builder.setPositiveButton("确定", null);
-            builder.show(); }
-        else if (!m_phone.matches()) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(BusCpAddactivity.this);
-            builder.setTitle("提示");
-            builder.setMessage("输入价格格式错误");
-            builder.setPositiveButton("确定", null);
-            builder.show();
+    public void formatCheck(){
+        Caipininfo caipininfo = new Caipininfo();
+        caipininfo.setBusid(Integer.parseInt(busid_et.getText().toString()));
+        caipininfo.setCpname(cpname_et.getText().toString());
+        caipininfo.setCpjiage(Integer.parseInt(cpjiage_et.getText().toString()));
+        caipininfo.setCpbeizhu(cpbeizhu_et.getText().toString());
+        caipininfo.setCptupian(imagepath);
+        if (caipinDao.addcaipin(caipininfo)>0){
+            Toast.makeText(this,"添加成功",Toast.LENGTH_SHORT).show();
+            Intent intent=new Intent(BusCpAddactivity.this,BusCaipinFragment.class);
+            startActivity(intent);
+            finish();
         }else {
-            Caipininfo caipininfo = new Caipininfo();
-            caipininfo.setBusid(Integer.parseInt(busid_et.getText().toString()));
-            caipininfo.setCpname(cpname_et.getText().toString());
-            caipininfo.setCpjiage(Integer.parseInt(cojiage_et.getText().toString()));
-            caipininfo.setCpbeizhu(cpbeizhu_et.getText().toString());
-            caipininfo.setCptupian(imagepath);
-            if (caipinDao.addcaipin(caipininfo)>0){
-                Toast.makeText(this,"添加成功",Toast.LENGTH_SHORT).show();
-                Intent intent=new Intent(BusCpAddactivity.this, BusCaipinFragment.class);
-                //intent.setClass(RegisterActivity.this, LoginActivity.class);
-                intent.putExtra("cpname",caipininfo.getCpname());
-                startActivity(intent);
-                finish();
-            }else {
-                Toast.makeText(this,"添加失败！",Toast.LENGTH_SHORT).show();
-            }
+            Toast.makeText(this,"添加失败！",Toast.LENGTH_SHORT).show();
         }
     }
 

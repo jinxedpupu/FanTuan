@@ -13,7 +13,7 @@ import android.widget.TextView;
 import com.liu.fantuan.R;
 import com.liu.fantuan.fragment.BusinessFragment;
 import com.liu.fantuan.fragment.MainFragment;
-import com.liu.fantuan.fragment.RankFragment;
+import com.liu.fantuan.fragment.DdFragment;
 
 public class MainActivity extends AppCompatActivity  implements View.OnClickListener {
     TextView mTabHome,mTabRanking,mTabMine;
@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
                 mTabRanking.setCompoundDrawablesWithIntrinsicBounds(0,
                         R.mipmap.ic_dd_select,0,0);
                 if(mrankFragment == null){
-                    mrankFragment = new RankFragment();
+                    mrankFragment = new DdFragment();
                     mTransaction.add(R.id.container, mrankFragment, "rank_fragment");
                 }else {
                     mTransaction.show(mrankFragment);

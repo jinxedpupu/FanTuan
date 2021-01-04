@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.liu.fantuan.fragment.RankFragment">
+    tools:context="com.liu.fantuan.fragment.DdFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -47,16 +47,6 @@
                     android:text="添加菜品" />
             </LinearLayout>
 
-            <!--<Button
-                android:id="@+id/cpadd"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/bgcpaddcolor"
-                android:textSize="20dp"
-
-                android:textColor="#000"
-                android:text="添加菜品" />
--->
         </com.google.android.material.appbar.AppBarLayout>
         <ListView
             android:id="@+id/paihanglist"

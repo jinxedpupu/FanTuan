@@ -8,7 +8,6 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,19 +18,17 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.liu.fantuan.R;
-import com.liu.fantuan.dao.BusinessDao;
 import com.liu.fantuan.dao.CaipinDao;
-import com.liu.fantuan.model.Businessinfo;
 import com.liu.fantuan.model.Caipininfo;
 
 import java.util.List;
 
 
-public class RankFragment extends Fragment {
-
+public class DdFragment extends Fragment {
+/*
     ListView listView;
     List<Caipininfo> list;
-    public RankFragment() {
+    public DdFragment() {
         // Required empty public constructor
     }
 
@@ -42,11 +39,11 @@ public class RankFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view=inflater.inflate(R.layout.fragment_rank, container, false);
+        View view=inflater.inflate(R.layout.fragment_dd, container, false);
         listView=view.findViewById(R.id.paihanglist);
 
         CaipinDao caipinDao=new CaipinDao(getContext());
-        list = caipinDao.CaipininfoDesc();
+        list = caipinDao.CaipininfoDesc(id);
 
         //System.out.println("list.size()="+list.size());
         MyListAdapter myListAdapter=new MyListAdapter(getContext(),list);
@@ -57,7 +54,7 @@ public class RankFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Caipininfo caipininfo=list.get(position);
                 Intent intent=new Intent();
-                /*intent.putExtra("ispsy","2");*/
+                *//*intent.putExtra("ispsy","2");*//*
                 intent.putExtra("cpname",caipininfo.getCpname()+"");
                 intent.putExtra("cpjiage",caipininfo.getCpjiage()+"");
                 intent.putExtra("cpbeizhu",caipininfo.getCpbeizhu()+"");
@@ -107,13 +104,13 @@ public class RankFragment extends Fragment {
             }else {
                 viewHolder= (ViewHolder) convertView.getTag();
             }
-           /* int pos =position+1;
+           *//* int pos =position+1;
             viewHolder.mingcitv.setText(pos+"");
             Bitmap bitmap = BitmapFactory.decodeFile(distributorList.get(position).getDistributor_picPath());
             viewHolder.psyimageview.setImageBitmap(bitmap);
             viewHolder.psynametv.setText(distributorList.get(position).getDistributor_name());
             viewHolder.psyjdcstv.setText(distributorList.get(position).getDistributor_singularnum()+"");
-            return convertView;*/
+            return convertView;*//*
             Caipininfo caipininfo = list.get(position);
             viewHolder.cpnametv.setText(caipininfo.getCpname());
             viewHolder.cpbeizhu.setText(caipininfo.getCpbeizhu());
@@ -129,5 +126,5 @@ public class RankFragment extends Fragment {
         public ImageView cptupianview;
         public TextView cpjiagetv;
         public TextView cpbeizhu;
-    }
+    }*/
 }

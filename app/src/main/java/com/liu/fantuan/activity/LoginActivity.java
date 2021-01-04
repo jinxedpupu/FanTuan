@@ -99,8 +99,10 @@ public class LoginActivity extends AppCompatActivity {
                         Toast.makeText(LoginActivity.this, "该商家用户名不存在", Toast.LENGTH_LONG).show();
                     } else if (businessinfo != null) {
                         if (businessDao.login(username, userpassword)) {
-                            editor.putString("userId", username);
+
+                            editor.putString("buszhanghao", username);
                             editor.commit();
+
                             Intent intent = new Intent(LoginActivity.this, UserMainActivity.class);
                             startActivity(intent);
                         } else {

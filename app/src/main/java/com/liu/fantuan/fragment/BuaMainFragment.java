@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.liu.fantuan.R;
 import com.liu.fantuan.dao.BusinessDao;
@@ -28,6 +30,7 @@ public class BuaMainFragment extends Fragment {
     private Toolbar toolbar;
     private TextView showuser;
     private LinearLayout lin_ddxq;
+    private Bitmap bitmap;
 
     public BuaMainFragment() {
         // Required empty public constructor
@@ -47,13 +50,15 @@ public class BuaMainFragment extends Fragment {
         headImage = view.findViewById(R.id.myicon);
         showuser = view.findViewById(R.id.showuser);
         SharedPreferences sp = getActivity().getSharedPreferences("userdata", Context.MODE_MULTI_PROCESS);
-        String busid = sp.getString("userId", "");
+        String buszhanghao = sp.getString("buszhanghao", "");
         BusinessDao businessDao = new BusinessDao(getContext());
-        Businessinfo businesser = businessDao.findUserById(busid);
-        showuser.setText(busid);
-        Bitmap bitmap = BitmapFactory.decodeFile(businesser.getBuspicpath());
+        System.out.println("buszhanghao="+buszhanghao);
+        Businessinfo businesser = businessDao.findUserById(buszhanghao);
+        showuser.setText(buszhanghao);
+
+        bitmap = BitmapFactory.decodeFile(businesser.getBuspicpath());
         headImage.setImageBitmap(bitmap);
-        /*String picPath = user.getUser_picpath();
+        /*String picPath = businesser.getBuspicpath();
         Toast.makeText(getContext(), picPath, Toast.LENGTH_LONG).show();
         if (null != picPath && !picPath.equals("null") && !picPath.equals("")) {
             headImage.setImageURI(Uri.parse(picPath));

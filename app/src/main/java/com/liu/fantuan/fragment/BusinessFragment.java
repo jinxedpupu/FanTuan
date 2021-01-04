@@ -5,9 +5,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-
 import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,22 +15,17 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.liu.fantuan.R;
-import com.liu.fantuan.activity.Bus_menuActivity;
+import com.liu.fantuan.activity.BusCplistActivity;
 import com.liu.fantuan.dao.BusinessDao;
-import com.liu.fantuan.dao.CaipinDao;
 import com.liu.fantuan.model.Businessinfo;
-import com.liu.fantuan.model.Caipininfo;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
 import com.youth.banner.listener.OnBannerListener;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-
 
 public class BusinessFragment extends Fragment {
 
@@ -70,10 +63,9 @@ public class BusinessFragment extends Fragment {
                 Intent intent=new Intent();
                 intent.putExtra("busname",businessinfo.getBusname()+"");
                 intent.putExtra("buspicpath",businessinfo.getBuspicpath()+"");
-
-                intent.setClass(Objects.requireNonNull(getContext()), Bus_menuActivity.class);
-
-
+                intent.putExtra("busdianhua",businessinfo.getBusdianhua());
+                intent.putExtra("busid",String.valueOf(businessinfo.getBusid()));
+                intent.setClass(Objects.requireNonNull(getContext()), BusCplistActivity.class);
                 startActivity(intent);
             }
         });
