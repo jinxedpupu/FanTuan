@@ -40,6 +40,7 @@ public class BusMainActivity extends AppCompatActivity  implements View.OnClickL
         mTabHome.setOnClickListener(this);
         mTabRanking.setOnClickListener(this);
         mTabMine.setOnClickListener(this);
+
     }
 
     //1111111111111111111111111111111111
@@ -147,4 +148,6 @@ public class BusMainActivity extends AppCompatActivity  implements View.OnClickL
                 break;
         }
     }
+
+
 }

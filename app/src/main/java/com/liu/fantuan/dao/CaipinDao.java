@@ -2,6 +2,7 @@ package com.liu.fantuan.dao;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import com.liu.fantuan.db.DBOpenHelper;
@@ -67,5 +68,19 @@ public class CaipinDao {
             return caipininfo;
         }
         return null;
+    }
+
+    public void xiugai(String cpname, int cpjiage, String cpbeizhu, int cpid) {
+        db = dbOpenHelper.getWritableDatabase();
+        db.execSQL("update caipin set cpname=?, cpjiage=?,cpbeizhu=? where cpid=? ", new Object[]{cpname,cpjiage,cpbeizhu,cpid});
+        // 数据库用完需要关闭
+        db.close();
+    }
+
+
+    public void delete(int cpid) {
+        db = dbOpenHelper.getWritableDatabase();
+        db.execSQL("delete from caipin where cpid=?", new Object[]{cpid});
+        db.close();
     }
 }

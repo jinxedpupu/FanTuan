@@ -92,13 +92,13 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/button3"
+                android:id="@+id/cpxiugai"
                 android:layout_width="45dp"
                 android:layout_height="wrap_content"
                 android:text="修改" />
 
             <Button
-                android:id="@+id/button4"
+                android:id="@+id/cpshanchu"
                 android:layout_width="45dp"
                 android:layout_height="wrap_content"
                 android:text="删除" />

@@ -13,16 +13,23 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.liu.fantuan.R;
 import com.liu.fantuan.activity.BusCpAddactivity;
+import com.liu.fantuan.activity.BusCpXgActivity;
+import com.liu.fantuan.activity.BusMainActivity;
+import com.liu.fantuan.activity.LoginActivity;
+import com.liu.fantuan.activity.UserCplistActivity;
 import com.liu.fantuan.dao.BusinessDao;
 import com.liu.fantuan.dao.CaipinDao;
-import com.liu.fantuan.model.Businessinfo;
 import com.liu.fantuan.model.Caipininfo;
 import java.util.List;
+import java.util.Objects;
 
 
 public class BusCaipinFragment extends Fragment {
@@ -31,6 +38,7 @@ public class BusCaipinFragment extends Fragment {
     SharedPreferences sp;
     String buszhanghao;
     int busid;
+
 
     public BusCaipinFragment() {
         // Required empty public constructor
@@ -59,6 +67,7 @@ public class BusCaipinFragment extends Fragment {
                 startActivity(new Intent(getContext(), BusCpAddactivity.class));
             }
         });
+
         BusCaipinFragment.MyListAdapter myListAdapter=new BusCaipinFragment.MyListAdapter(getContext(),list);
         listView.setAdapter(myListAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -66,6 +75,7 @@ public class BusCaipinFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Caipininfo caipininfo=list.get(position);
                 Intent intent=new Intent();
+                intent.putExtra("cpid",caipininfo.getCpid()+"");
                 intent.putExtra("cpname",caipininfo.getCpname()+"");
                 intent.putExtra("cpjiage",caipininfo.getCpjiage()+"");
                 intent.putExtra("cpbeizhu",caipininfo.getCpbeizhu()+"");
@@ -109,16 +119,49 @@ public class BusCaipinFragment extends Fragment {
                 viewHolder.cptupianview=convertView.findViewById(R.id.cptupian);
                 viewHolder.cpjiagetv=convertView.findViewById(R.id.cpjiage);
                 viewHolder.cpbeizhutv=convertView.findViewById(R.id.cpbeizhu);
+                viewHolder.cpxiugaibt = convertView.findViewById(R.id.cpxiugai);
+                viewHolder.cpshanchubt= convertView.findViewById(R.id.cpshanchu);
+
+               /* viewHolder.cpshanchubt.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                    }
+                });*/
                 convertView.setTag(viewHolder);
             }else {
                 viewHolder= (BusCaipinFragment.ViewHolder) convertView.getTag();
             }
-            Caipininfo caipininfo = list.get(position);
+            final Caipininfo caipininfo = list.get(position);
             viewHolder.cpnametv.setText(caipininfo.getCpname());
             viewHolder.cpbeizhutv.setText(caipininfo.getCpbeizhu());
             viewHolder.cpjiagetv.setText(caipininfo.getCpjiage() + "");
             Bitmap bitmap = BitmapFactory.decodeFile(caipininfo.getCptupian());
             viewHolder.cptupianview.setImageBitmap(bitmap);
+            viewHolder.cpxiugaibt.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    /*startActivity(new Intent(getActivity(), BusCpXgActivity.class));*/
+                    Intent intent=new Intent(getContext(),BusCpXgActivity.class);
+                    intent.putExtra("cpid",caipininfo.getCpid()+"");
+                    intent.putExtra("cpname",caipininfo.getCpname()+"");
+                    intent.putExtra("cpjiage",caipininfo.getCpjiage()+"");
+                    intent.putExtra("cpbeizhu",caipininfo.getCpbeizhu()+"");
+                    intent.putExtra("cptupian",caipininfo.getCptupian()+"");
+                    startActivity(intent);
+                }
+            });
+            viewHolder.cpshanchubt.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    CaipinDao caipinDao = new CaipinDao(getActivity());
+                    caipinDao.delete(caipininfo.getCpid());
+                    Toast.makeText(getContext(), "删除成功", Toast.LENGTH_LONG).show();
+                    Intent intent=new Intent(getContext(), BusMainActivity.class);
+                    startActivity(intent);
+
+                }
+            });
             return convertView;
         }
     }
@@ -128,5 +171,7 @@ public class BusCaipinFragment extends Fragment {
         public TextView cpjiagetv;
         public TextView cpbeizhutv;
         public ImageView cptupianview;
+        public Button cpxiugaibt;
+        public Button cpshanchubt;
     }
 }
